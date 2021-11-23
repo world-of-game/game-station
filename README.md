@@ -1,4 +1,4 @@
-# Name of Project : Game Station.
+# Name of Project : Game Station
 
 # ***Node21 - Group2***
 
