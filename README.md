@@ -10,10 +10,18 @@
 4. Tariq Sharaia
 5. Ibrahim Bader
 
-
 ## Summary of idea:
 A desktop app that contain entertainment games for users, the games will diverse from Memory puzzles to Rock, Paper, Scissors and much more.
  
+## Table Of Contents
+| Prep                                                                |
+| ------------------------------------------------------------------- |
+| [Summary of idea](README.md)                                           |
+| [Software Requirements](requirements.md)                               |
+| [Domain Model ](domain_model.md)                                       |
+| [Game Station Board](https://trello.com/b/Mei3uIva/gs-scenario) |
+| [Wireframe](https://miro.com/app/board/o9J_lhaOz_c=/)
+
 
 ## What problem or pain point does it solve?
 - To sum all sorts of famous games in one desktop app for better user experience.
