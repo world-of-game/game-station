@@ -26,7 +26,7 @@ We are aiming to create a game store that adds entertainment and improve the mem
 
 <br>
 
-![Data Flow Chart](https://github.com/world-of-game/game-station/blob/main/Data%20Flow%20Chart.png)
+![Data Flow Chart](game_station/assets/Data_Flow_Chart.png)
 
 <br>
 

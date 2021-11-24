@@ -17,8 +17,8 @@ A desktop app that contain entertainment games for users, the games will diverse
 | Prep                                                                |
 | ------------------------------------------------------------------- |
 | [Summary of idea](README.md)                                           |
-| [Software Requirements](requirements.md)                               |
-| [Domain Model ](domain_model.md)                                       |
+| [Software Requirements](game_station/assets/requirements.md)                               |
+| [Domain Model ](game_station/assets/domain_model.md)                                       |
 | [Game Station Board](https://trello.com/b/Mei3uIva/gs-scenario) |
 | [Wireframe](https://miro.com/app/board/o9J_lhaOz_c=/)
 
