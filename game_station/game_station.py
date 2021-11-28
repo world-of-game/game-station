@@ -1,8 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import ttk
-import sys
-import os
+from PIL import Image, ImageTk
 from tkinter import *
 import subprocess
 frame_styles = {"relief": "groove",
@@ -20,16 +19,16 @@ class LoginPage(tk.Tk):
 
         self.geometry("626x431")  # Sets window size to 626w x 431h pixels
         self.resizable(0, 0)  # This prevents any resizing of the screen
-        #bg = PhotoImage(file="game_station/game_assets/bg.jpg")
-        # label1 = Label(root, image=bg)
-        # label1.place(x=0, y=0)
-        title_styles = {"font": ("Trebuchet MS Bold", 16), "background": "blue"}
+        image1 = ImageTk.PhotoImage(file='Login.png', master=main_frame)
+        panel1 = Label(main_frame, image=image1)
+        panel1.image = image1  # keep a reference
+        panel1.pack(side='top', fill='both', expand='yes')
 
-        text_styles = {"font": ("Verdana", 14),
-                       "background": "blue",
-                       "foreground": "#E1FFFF"}
+        title_styles = {"font": ("Calibri", 16)}
 
-        frame_login = tk.Frame(main_frame, bg="blue", relief="groove", bd=2)  # this is the frame that holds all the login details and buttons
+        text_styles = {"font": ("Calibri", 14)}
+
+        frame_login = tk.Frame(main_frame,  relief="groove", bd=2)  # this is the frame that holds all the login details and buttons
         frame_login.place(rely=0.30, relx=0.17, height=130, width=400)
 
         label_title = tk.Label(frame_login, title_styles, text="Login Page")
@@ -48,10 +47,10 @@ class LoginPage(tk.Tk):
         entry_pw.grid(row=2, column=1)
 
         button = ttk.Button(frame_login, text="Login", command=lambda: getlogin())
-        button.place(rely=0.70, relx=0.50)
+        button.place(rely=0.70, relx=0.35)
 
         signup_btn = ttk.Button(frame_login, text="Register", command=lambda: get_signup())
-        signup_btn.place(rely=0.70, relx=0.75)
+        signup_btn.place(rely=0.70, relx=0.55)
 
         def get_signup():
             SignupPage()
@@ -172,8 +171,8 @@ class MenuBar(tk.Menu):
 
         menu_file = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Contact Us", menu=menu_file)
-        menu_file.add_command(label="Contact Us", command=lambda: parent.show_frame(ContactPage))
-        menu_file.add_command(label="Our Staff", command=lambda: parent.OpenNewWindow())
+        menu_file.add_command(label="Our Staff", command=lambda: parent.show_frame(ContactPage))
+        # menu_file.add_command(label="Our Staff", command=lambda: parent.OpenNewWindow())
         menu_file.add_separator()
         menu_file.add_command(label="Exit Application", command=lambda: parent.Quit_application())
 
@@ -205,8 +204,8 @@ class MyApp(tk.Tk):
         frame = self.frames[name]
         frame.tkraise()
 
-    def OpenNewWindow(self):
-        OpenNewWindow()
+    # def OpenNewWindow(self):
+    #     OpenNewWindow()
 
     def Quit_application(self):
         self.destroy()
@@ -221,41 +220,28 @@ class GUI(tk.Frame):
         self.main_frame.grid_rowconfigure(0, weight=1)
         self.main_frame.grid_columnconfigure(0, weight=1)
 
-
-
-class OpenNewWindow(tk.Tk):
-
-    def __init__(self, *args, **kwargs):
-
-        tk.Tk.__init__(self, *args, **kwargs)
-
-        main_frame = tk.Frame(self)
-        main_frame.pack_propagate(0)
-        main_frame.pack(fill="both", expand="true")
-        main_frame.grid_rowconfigure(0, weight=1)
-        main_frame.grid_columnconfigure(0, weight=1)
-        self.title("Our professional team")
-        self.geometry("500x500")
-        self.resizable(0, 0)
-
-        frame1 = ttk.LabelFrame(main_frame, text="Our staff")
-        frame1.pack(expand=True, fill="both")
-
-        label1 = tk.Label(frame1, font=("Verdana", 20), text="")
-        label1.pack(side="top")
-
 class ContactPage(GUI):
     def __init__(self, parent, controller):
         GUI.__init__(self, parent)
-
-        label1 = tk.Label(self.main_frame, font=("Verdana", 20), text="Contact Us")
-        label1.pack(side="top")
+        image1 = ImageTk.PhotoImage(file='staff.png', master=self.main_frame)
+        panel1 = Label(self.main_frame, image=image1)
+        panel1.image = image1  # keep a reference
+        panel1.pack(side='top', fill='both', expand='yes')
 
 class HomePage(GUI):
     def __init__(self, parent, controller):
         GUI.__init__(self, parent)
-        label1 = tk.Label(self.main_frame, font=("Verdana", 20), text="Game Station")
-        label1.pack(side="top")
+        image1 = ImageTk.PhotoImage(file='bg-2.png', master=self.main_frame)
+        panel1 = Label(self.main_frame, image=image1)
+        panel1.image = image1  # keep a reference
+        panel1.pack(side='top', fill='both', expand='yes')
+
+
+
+
+
+
+
 
 top = LoginPage()
 top.title("Game Station - Login Page")
@@ -263,4 +249,5 @@ root = MyApp()
 root.withdraw()
 root.title("Game Station")
 root.geometry("1024x600")
+root.resizable(0,0)
 root.mainloop()
