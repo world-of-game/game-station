@@ -150,6 +150,12 @@ class SignupPage(tk.Tk):
 class MenuBar(tk.Menu):
     def carRacing(self):
         subprocess.call(["python", "Car_Race\car_race.py"])
+    def Adventure(self):
+        subprocess.call(["python", "adventure/adventure.py"])
+    def Pong(self):
+        subprocess.call(["python", "Pong Game\pong_game.py"])
+    def Snake(self):
+        subprocess.call(["python", "snake\main.py"])
 
     def __init__(self, parent):
         tk.Menu.__init__(self, parent)
@@ -159,10 +165,9 @@ class MenuBar(tk.Menu):
         menu_operations = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Our Games", menu=menu_operations)
         menu_operations.add_command(label="Car Racing", command=self.carRacing)
-       # menu_operations.add_command(label="Car Racing", command=lambda: os.startfile('Car_Race\car_race.py'))
-        menu_operations.add_command(label="Adventure", command=lambda: parent.show_frame(PageTwo))
-        menu_operations.add_command(label="Pong", command=lambda: parent.show_frame(PageThree))
-        menu_operations.add_command(label="Snake", command=lambda: parent.show_frame(PageFour))
+        menu_operations.add_command(label="Adventure", command=self.Adventure)
+        menu_operations.add_command(label="Pong", command=self.Pong)
+        menu_operations.add_command(label="Snake", command=self.Snake)
 
 
         menu_file = tk.Menu(self, tearoff=0)
@@ -187,7 +192,7 @@ class MyApp(tk.Tk):
         # self.resizable(0, 0) prevents the app from being resized
         # self.geometry("1024x600") fixes the applications size
         self.frames = {}
-        pages = ( PageOne, PageTwo, PageThree, PageFour,ContactPage,HomePage)
+        pages = (ContactPage,HomePage)
         for F in pages:
             frame = F(main_frame, self)
             self.frames[F] = frame
@@ -216,41 +221,6 @@ class GUI(tk.Frame):
         self.main_frame.grid_rowconfigure(0, weight=1)
         self.main_frame.grid_columnconfigure(0, weight=1)
 
-
-
-class PageOne(GUI):
-    def __init__(self, parent, controller):
-        GUI.__init__(self, parent)
-
-        label1 = tk.Label(self.main_frame, font=("Verdana", 20), text="Car Racing")
-        label1.pack(side="top")
-
-
-
-
-
-class PageThree(GUI):
-    def __init__(self, parent, controller):
-        GUI.__init__(self, parent)
-
-        label1 = tk.Label(self.main_frame, font=("Verdana", 20), text="Pong")
-        label1.pack(side="top")
-
-
-class PageFour(GUI):
-    def __init__(self, parent, controller):
-        GUI.__init__(self, parent)
-
-        label1 = tk.Label(self.main_frame, font=("Verdana", 20), text="Snake")
-        label1.pack(side="top")
-
-
-class PageTwo(GUI):
-    def __init__(self, parent, controller):
-        GUI.__init__(self, parent)
-
-        label1 = tk.Label(self.main_frame, font=("Verdana", 20), text="Adventure")
-        label1.pack(side="top")
 
 
 class OpenNewWindow(tk.Tk):
