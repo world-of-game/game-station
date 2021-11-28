@@ -32,25 +32,25 @@ level = 1
 score = 0
 
 
-sun_img = pygame.image.load('img/sun.png')
+sun_img = pygame.image.load('adventure/img/sun.png')
 sun = pygame.transform.scale(sun_img, (tile_size, tile_size))
-bg_img = pygame.image.load('img/sky.jpg')
+bg_img = pygame.image.load('adventure/img/sky.jpg')
 bg = pygame.transform.scale(bg_img, (700, 700))
-restart_img = pygame.image.load('img/restart_btn.png')
-start_img = pygame.image.load('img/start_btn.png')
+restart_img = pygame.image.load('adventure/img/restart_btn.png')
+start_img = pygame.image.load('adventure/img/start_btn.png')
 start_img = pygame.transform.scale(start_img, (120, 42))
-exit_img = pygame.image.load('img/exit_btn.png')
+exit_img = pygame.image.load('adventure/img/exit_btn.png')
 exit_img = pygame.transform.scale(exit_img, (120, 42))
 
 
 # sounds
-pygame.mixer.music.load('img/music.wav')
+pygame.mixer.music.load('adventure/img/music.wav')
 pygame.mixer.music.play(-1, 0.0, 5000)
-coin_sound = pygame.mixer.Sound('img/coin.wav')
+coin_sound = pygame.mixer.Sound('adventure/img/coin.wav')
 coin_sound.set_volume(0.5)
-jump_sound = pygame.mixer.Sound('img/jump.wav')
+jump_sound = pygame.mixer.Sound('adventure/img/jump.wav')
 jump_sound.set_volume(0.5)
-game_over_sound = pygame.mixer.Sound('img/game_over.wav')
+game_over_sound = pygame.mixer.Sound('adventure/img/game_over.wav')
 game_over_sound.set_volume(0.5)
 
 
@@ -68,8 +68,8 @@ def reset_level(level):
 	score_coin = Coin(tile_size // 2, tile_size // 2)
 	coin_group.add(score_coin)
 
-	if path.exists(f'level{level}_data'):
-		pickle_in = open(f'level{level}_data', 'rb')
+	if path.exists(f'adventure/level{level}_data'):
+		pickle_in = open(f'adventure/level{level}_data', 'rb')
 		world_data = pickle.load(pickle_in)
 	world = World(world_data)
 
@@ -230,7 +230,7 @@ class Player():
 		self.index = 0
 		self.counter = 0
 		for i in range(1, 7):
-			img_right = pygame.image.load(f'img/pose_{i}.png')
+			img_right = pygame.image.load(f'adventure/img/pose_{i}.png')
 			if i == 3 or i == 6:
 				img_right = pygame.transform.scale(img_right, (45, 56))
 			else:
@@ -239,7 +239,7 @@ class Player():
 			self.images_movement_right.append(img_right)
 			self.images_movement_left.append(img_left)
 		# print(len(self.images_movement_right))
-		self.death_image = pygame.image.load(f'img/death_image.png')
+		self.death_image = pygame.image.load(f'adventure/img/death_image.png')
 		self.death_image = pygame.transform.scale(self.death_image, (45, 56))
 		self.image = self.images_movement_right[self.index]
 		self.rect = self.image.get_rect()
@@ -260,8 +260,8 @@ class World():
 		self.tile_list = []
 
 		# load images
-		dirt_img = pygame.image.load('img/dirt.png')
-		grass_img = pygame.image.load('img/grass.png')
+		dirt_img = pygame.image.load('adventure/img/dirt.png')
+		grass_img = pygame.image.load('adventure/img/grass.png')
 
 		row_count = 0
 		for row in data:
@@ -311,7 +311,7 @@ class World():
 class Enemy(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		pygame.sprite.Sprite.__init__(self)
-		self.image = pygame.image.load('img/blob.png')
+		self.image = pygame.image.load('adventure/img/blob.png')
 		self.image = pygame.transform.scale(self.image, (tile_size, 30))
 		self.rect = self.image.get_rect()
 		self.rect.x = x
@@ -330,7 +330,7 @@ class Enemy(pygame.sprite.Sprite):
 class Platform(pygame.sprite.Sprite):
 	def __init__(self, x, y, move_x, move_y):
 		pygame.sprite.Sprite.__init__(self)
-		self.image = pygame.image.load('img/platform.png')
+		self.image = pygame.image.load('adventure/img/platform.png')
 		self.image = pygame.transform.scale(self.image, (tile_size, tile_size //2))
 		self.rect = self.image.get_rect()
 		self.rect.x = x
@@ -351,7 +351,7 @@ class Platform(pygame.sprite.Sprite):
 class Lava(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		pygame.sprite.Sprite.__init__(self)
-		self.image = pygame.image.load('img/lava.png')
+		self.image = pygame.image.load('adventure/img/lava.png')
 		self.image = pygame.transform.scale(self.image, (tile_size, tile_size//2))
 		self.rect = self.image.get_rect()
 		self.rect.x = x
@@ -363,7 +363,7 @@ class Lava(pygame.sprite.Sprite):
 class Coin(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		pygame.sprite.Sprite.__init__(self)
-		self.image = pygame.image.load('img/coin.png')
+		self.image = pygame.image.load('adventure/img/coin.png')
 		self.image = pygame.transform.scale(self.image, (tile_size//2, tile_size//2))
 		self.rect = self.image.get_rect()
 		self.rect.center = (x, y)
@@ -374,7 +374,7 @@ class Coin(pygame.sprite.Sprite):
 class Exit(pygame.sprite.Sprite):
 	def __init__(self, x, y):
 		pygame.sprite.Sprite.__init__(self)
-		self.image = pygame.image.load('img/exit.png')
+		self.image = pygame.image.load('adventure/img/exit.png')
 		self.image = pygame.transform.scale(self.image, (tile_size, int(tile_size * 1.5)))
 		self.rect = self.image.get_rect()
 		self.rect.x = x
@@ -395,8 +395,8 @@ score_coin = Coin(tile_size // 2, tile_size // 2)
 coin_group.add(score_coin)
 
 # load world_data
-if path.exists(f'level{level}_data'):
-	pickle_in = open(f'level{level}_data', 'rb')
+if path.exists(f'adventure/level{level}_data'):
+	pickle_in = open(f'adventure/level{level}_data', 'rb')
 	world_data = pickle.load(pickle_in)
 world = World(world_data)
 
