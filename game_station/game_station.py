@@ -210,7 +210,6 @@ class MyApp(tk.Tk):
     def Quit_application(self):
         self.destroy()
 
-
 class GUI(tk.Frame):
     def __init__(self, parent):
         tk.Frame.__init__(self, parent)
