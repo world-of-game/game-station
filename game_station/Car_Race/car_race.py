@@ -197,7 +197,7 @@ def gameloop():
         highscore = f.read()
 
     def show_highscore(x, y):
-        Hiscore_text = font1.render('HISCORE :' + str(highscore), True, (255, 0, 0))
+        Hiscore_text = font1.render('HIGH SCORE :' + str(highscore), True, (255, 0, 0))
         screen.blit(Hiscore_text, (x, y))
         pygame.display.update()
 
@@ -241,16 +241,16 @@ def gameloop():
     car1 = pygame.image.load('Car_Race/car_assets_game/car1.jpeg')
     car1X = random.randint(178, 490)
     car1Y = 100
-    car1Ychange = 3
+    car1Ychange = 2
     car2 = pygame.image.load('Car_Race/car_assets_game/car2.png')
     car2X = random.randint(178, 490)
     car2Y = 100
-    car2Ychange = 3
+    car2Ychange = 2
 
     car3 = pygame.image.load('Car_Race/car_assets_game/car3.png')
     car3X = random.randint(178, 490)
     car3Y = 100
-    car3Ychange = 3
+    car3Ychange = 2
 
     run = True
     while run:

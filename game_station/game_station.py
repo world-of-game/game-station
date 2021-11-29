@@ -161,12 +161,12 @@ class MenuBar(tk.Menu):
         menu_home = tk.Menu(self, tearoff=0)
         self.add_cascade(label="Home", menu=menu_home)
         menu_home.add_command(label="Home", command=lambda: parent.show_frame(HomePage))
-        menu_operations = tk.Menu(self, tearoff=0)
-        self.add_cascade(label="Our Games", menu=menu_operations)
-        menu_operations.add_command(label="Car Racing", command=self.carRacing)
-        menu_operations.add_command(label="Adventure", command=self.Adventure)
-        menu_operations.add_command(label="Pong", command=self.Pong)
-        menu_operations.add_command(label="Snake", command=self.Snake)
+        # menu_operations = tk.Menu(self, tearoff=0)
+        # self.add_cascade(label="Our Games", menu=menu_operations)
+        # menu_operations.add_command(label="Car Racing", command=self.carRacing)
+        # menu_operations.add_command(label="Adventure", command=self.Adventure)
+        # menu_operations.add_command(label="Pong", command=self.Pong)
+        # menu_operations.add_command(label="Snake", command=self.Snake)
 
 
         menu_file = tk.Menu(self, tearoff=0)
@@ -230,10 +230,69 @@ class ContactPage(GUI):
 class HomePage(GUI):
     def __init__(self, parent, controller):
         GUI.__init__(self, parent)
+
         image1 = ImageTk.PhotoImage(file='bg-2.png', master=self.main_frame)
         panel1 = Label(self.main_frame, image=image1)
         panel1.image = image1  # keep a reference
         panel1.pack(side='top', fill='both', expand='yes')
+
+        B1 = tk.Button(panel1,text="Car Racing",
+                      command=self.carRacing,
+                      height=2,
+                      width=10,
+                      font="Arial 16 bold",
+                      fg = 'white',
+                      bg = '#FF0075',
+                      bd =  10,
+                      highlightthickness=4,
+                      highlightcolor="#37d3ff",
+                      highlightbackground="#37d3ff",
+                      borderwidth=4).place(x=10, y=40)
+        # B1.pack(side='top')
+        B2 = tk.Button(panel1, text="Adventure", command=self.Adventure, height=2, width=10,font="Arial 16 bold",
+                      fg = '#FFE300',
+                      bg = '#753188',
+                      bd =  10,
+                      highlightthickness=4,
+                      highlightcolor="#37d3ff",
+                      highlightbackground="#37d3ff",
+                      borderwidth=4).place(x=180, y=40)
+        # B2.pack(side='top')
+        B3 = tk.Button(panel1, text="Pong", command=self.Pong, height=2, width=10,font="Arial 16 bold",fg = '#090910',
+                      bg = '#49FF00',
+                      bd =  10,
+                      highlightthickness=4,
+                      highlightcolor="#37d3ff",
+                      highlightbackground="#37d3ff",
+                      borderwidth=4).place(x=10, y=140)
+        # B3.pack(side='top')
+        B4 = tk.Button(panel1, text="Snake", command=self.Snake,height=2, width=10,font="Arial 16 bold",
+                      fg = '#0F044C',
+                      bg = '#1DB9C3',
+                      bd =  10,
+                      highlightthickness=4,
+                      highlightcolor="#37d3ff",
+                      highlightbackground="#37d3ff",
+                      borderwidth=4).place(x=180, y=140)
+        # B4.pack(side="top")
+        # self.main_frame.config(bg='systemTransparent')
+
+
+    def carRacing(self):
+            subprocess.call(["python", "Car_Race\car_race.py"])
+
+    def Adventure(self):
+            subprocess.call(["python", "adventure/adventure.py"])
+
+    def Pong(self):
+            subprocess.call(["python", "Pong Game\pong_game.py"])
+
+    def Snake(self):
+            subprocess.call(["python", "snake\main.py"])
+
+
+
+
 
 
 
