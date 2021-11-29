@@ -37,7 +37,7 @@ while run:
         text = font.render('Game Over', True, (255, 0, 127))
         window.blit(text, (150, 200))
         pygame.display.update()
-        pygame.time.delay(1000)
+        pygame.time.delay(2000)
         snake.respawn()
         food.respawn()
 
