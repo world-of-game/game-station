@@ -135,7 +135,7 @@ while run:
 
 	draw_board()
 	draw_text('Computer: ' + str(cpu_score), font, white, 20, 15)
-	draw_text('Player: ' + str(player_score), font, white, screen_width - 100, 15)
+	draw_text('Player: ' + str(player_score), font, white, screen_width - 130, 15)
 	draw_text('BALL SPEED: ' + str(abs(pong.speed_x)), font, white, screen_width // 2 - 100 , 15)
 
 
